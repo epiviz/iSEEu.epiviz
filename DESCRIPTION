@@ -1,0 +1,21 @@
+Package: iSEEu.epiviz
+Type: Package
+Title: Epiviz Genome Browser panel for iSEEu
+Version: 0.0.1
+Authors@R: c( 
+  person("Jayaram", "Kancherla", email="jayaram.kancherla@gmail.com", 
+    role=c("aut", "cre")))
+Maintainer: Jayaram Kancherla <jayaram.kancherla@gmail.com>
+Description: Enables Genome visualization in iSEE using Epiviz. Epiviz natively 
+  supports many Bioconductor data structures to interactively explore 
+  genetic, epigenetic and transcriptomic data. For more details checkout the 
+  epivizrChart package.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.4), iSEE, epivizrChart
+Suggests: knitr, BiocStyle, scRNAseq, scater, Homo.sapiens
+VignetteBuilder: knitr
+biocViews: Visualization, Infrastructure, GUI
+Collate: 'EpivizBrowser-class.R'
+RoxygenNote: 7.1.1
