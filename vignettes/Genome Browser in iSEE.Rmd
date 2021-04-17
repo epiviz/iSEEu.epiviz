@@ -1,0 +1,53 @@
+---
+title: "Explore genetic data using Epiviz in iSEE"
+author: "Jayaram Kancherla"
+date: "`r Sys.Date()`"
+output: BiocStyle::html_document
+vignette: >
+  %\VignetteIndexEntry{Explore PBMC 3K dataset}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading required packages
+
+```{r load-packages, message=FALSE, warning=FALSE}
+library(Homo.sapiens)
+library(scRNAseq)
+library(scater)
+library(iSEEu.epiviz)
+```
+
+## An example sce dataset
+
+```{r}
+# Example dataset
+sce <- ReprocessedAllenData(assays="tophat_counts")
+
+set.seed(100)
+sce <- logNormCounts(sce, exprs_values="tophat_counts")
+sce <- runPCA(sce, ncomponents=4)
+sce <- runTSNE(sce)
+sce
+```
+
+## Make a list of tracks
+
+TODO: Show example using AnnotationHub datasets
+
+```{r}
+browser <- EpivizBrowser(genome=Homo.sapiens, PanelWidth=12L, PanelHeight=400L)
+```
+
+## Spin up iSEE with browser panel
+
+```{r, eval=FALSE}
+app <- iSEE(sce, initial=list(
+  ReducedDimensionPlot(Type="TSNE", VisualBoxOpen=TRUE, VisualChoices="Size", PanelWidth=6L),
+  browser))
+app
+```
