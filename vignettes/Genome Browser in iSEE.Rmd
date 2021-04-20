@@ -37,10 +37,14 @@ sce
 
 ## Make a list of tracks
 
-TODO: Show example using AnnotationHub datasets
+```{r}
+data("tcga_colon_blocks")
+data("tcga_colon_expression")
+```
+
 
 ```{r}
-browser <- EpivizBrowser(genome=Homo.sapiens, PanelWidth=12L, PanelHeight=400L)
+browser <- EpivizBrowser(chr="chr11", start=118000000, end=121000000, genome=Homo.sapiens, tracks=list("tcga_peaks" = tcga_colon_blocks, "tcga_expression"=tcga_colon_expression), PanelWidth=12L, PanelHeight=400L)
 ```
 
 ## Spin up iSEE with browser panel
