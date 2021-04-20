@@ -68,6 +68,6 @@ setMethod(".renderOutput", "EpivizBrowser",
   function(x, se, ..., output, pObjects, rObjects) {
     x[["epivizNav"]]$add_genome(x[["genome"]])
     for (track in names(x[["tracks"]])) {
-      x[["epivizNav"]]$plot(tracks[[track]], datasource_name=track)
+      x[["epivizNav"]]$plot(x[["tracks"]][[track]], datasource_name=track)
     }
   })
